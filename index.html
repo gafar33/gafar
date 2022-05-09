@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontawesome\font-awesome-4.7.0\css\font-awesome.min.css">
+ 
+    <link rel="stylesheet"  href="normaliz.css">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+    <div class="settings-box">
+        <div class="toggel">
+        <i class=" fa fa-gear fa-spin"></i>
+    </div>
+        <div class="settings-content">
+               stesting options
+            <div class="optins-box">
+                <h2>color</h2>
+                <ul class="color-list">
+                    <li class="active" data-color="#ff9800"></li>
+                    <li data-color="#072cff"></li>
+                    <li data-color=" #16e420"></li>
+                    <li data-color="#f70893"></li>
+                    <li data-color=" #e41627"></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="landig-page">
+        <div class="overlay"></div>
+        <div class="contener">
+   <div class="header" > 
+    <div class="logo">spical desing</div>
+
+
+<ul class="links">
+    <li><a href="#">about</a></li>
+    <li><a  href="#">service</a></li>
+    <li><a  href="#">product</a></li>
+    <li><a  href="#">contact</a></li>
+</ul>
+
+   </div>
+   </div>
+   <div class="text">
+       <h1>we are <span>creative</span> compane </h1>
+       <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam ullam </p>
+   </div>
+    </div>
+
+
+  <div class="contener">
+ <div class="about-us">
+        <div class="infobox">
+            <h1>about us</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit maxime quasi reiciendis eos quidem, harum illum molestiae non labore nostrum tempore nobis et cumque inventore ea? Distinctio modi eligendi rerum.</p>
+        </div>
+        <div class="img-box">
+          <img src="img\about us.jpg">
+        
+        </div>
+        
+    </div>
+  </div>
+
+<div class="social">
+        <i class=" fa fa-facebook " href="#" ></i>
+        <i class="fa fa-instagram" href="#"></i>
+        <i class="fa fa-google" href="#"></i>
+        <i class="fa fa-twitter" href="#"></i>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+<script >
+
+    let maincolor = localStorage.getItem("optins-box");
+    if(maincolor !== null) {
+        console .log('locol storeg is not empty')
+        document.documentElement.style.setProperty('--main--color', localStorage.getItem("optins-box"));
+
+    }
+  //color list
+  const colorsli = document.querySelectorAll(".color-list li");
+// loop in li
+  colorsli.forEach(li => {
+      // click in every list item
+    li.addEventListener("click", (e) => {
+
+//set color on root
+   document.documentElement.style.setProperty('--main--color', e.target.dataset.color);
+ //set color on locol storeg
+ localStorage.setItem("optins-box", e.target.dataset.color);
+ //remove all active from all children
+ e.target.parentElement.querySelectorAll(".active").forEach(element => {
+
+      element.classlist.remove("active");
+
+     if(element.dataset.color === maincolor ) {
+        element.classlist.add("active");
+     }
+ });
+ //add active in class on self
+  //e.target.classlist.add("active");
+
+    });
+    
+   });
+//////////////////////////////////////////////////////
+let landingPage = document.querySelector(".landig-page");
+
+    let imgsArray = ["01.jpg" , "02.jpg " ,"03.jpg" , "04.jpg" , "05.jpg"];
+    
+    
+    setInterval( () =>{
+    
+      
+    
+     let  randomNumber=Math.floor(Math.random() * imgsArray.length);
+    
+      landingPage.style.backgroundImage = 'url("imgs/'+ imgsArray[randomNumber] +'")';
+    }, 5000);
+
+    </script>
+    
